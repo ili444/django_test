@@ -1,4 +1,4 @@
-# Djangoapp 
+# Django application 
 
 # Процесс запуска кода на локальной машине
   • Устанавливаем Python

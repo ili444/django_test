@@ -15,4 +15,7 @@ def view_post(request):
         path = request.path
     url = 'http://localhost:8000' + path
     date = Post.objects.filter(url=url).values()
-    return render(request, 'blog/page_post.html', context={'date': date})
+    if date:
+        return render(request, 'blog/page_post.html', context={'date': date})
+    else:
+        raise Http404

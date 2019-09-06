@@ -2,8 +2,12 @@ import re
 import time
 from datetime import datetime
 from .models import Post
-from django.http import Http404, HttpResponse
-from urllib.request import urlopen, URLError
+
+try:
+    from urllib.request import urlopen, URLError
+except ImportError:
+    from urllib2 import urlopen, URLError
+    
 from threading import Thread
 from queue import Queue
 

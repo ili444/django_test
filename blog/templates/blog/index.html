@@ -1,0 +1,38 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    Home page
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1">Django application</span>
+    <a class="btn btn-warning" href="/admin" role="button">Login as admin</a>
+</nav>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6" id="left">
+            <form method="post">
+                <h1>Your url's:</h1>
+                <textarea rows="10" cols="35" name="text">
+                    {% for url in urls %}{% if url.time != None %}&lt;дата {{ url.time|date:"d.m.Y H:i:s" }}&gt;:{% else %}дата не указана{% endif %}    {{url.url}}{% if url.success %} success {% else %} error {% endif %}
+                    {% endfor %}
+                </textarea>
+             </form>
+
+        </div>
+         <div class="col-md-6" id="right">
+            <h1>Parse result:</h1>
+             <textarea rows="10" cols="45" name="text">
+             {% for url in urls %}{% if url.title != None and url.h1 != None and url.encode != None %}{{ url.url }} -        title - {{ url.title }}; charset - {{ url.encode }}; h1 - {{url.h1}}
+                 {% else %} {{ url.url }}
+                 {% endif %}
+             {% endfor %}
+                     </textarea>
+         </div>
+    </div>
+         <div class="col-md-6" id="button">
+            <a class="btn btn-warning" href="">Start parsing</a>
+        </div>
+
+{% endblock %}

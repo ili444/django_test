@@ -1,0 +1,13 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    Post page
+{% endblock %}
+
+{% block content %}
+{% for data in date %}
+<title>{{ data.title }}</title>
+<h1>{{ data.h1}}</h1>
+{% endfor %}
+
+{% endblock %}

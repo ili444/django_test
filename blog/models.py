@@ -8,5 +8,6 @@ class Post(models.Model):
     title = models.CharField(max_length=150, blank=True, default='', null=True)
     h1 = models.CharField(max_length=150, blank=True, default='', null=True)
     encode = models.CharField(max_length=16, blank=True, default='', null=True)
-
-
+    
+    def __str__(self):
+        return self.title

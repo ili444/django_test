@@ -9,10 +9,7 @@ def posts_list(request):
     return render(request, 'blog/index.html', context={'urls': urls})
 
 def view_post(request):
-    if request.path[-1:] == '/':
-        path = request.path[:-1]
-    else:
-        path = request.path
+    path = request.path[:-1] if request.path[-1:] == '/' else request.path
     url = 'http://localhost:8000' + path
     date = Post.objects.filter(url=url).values()
     if date:
